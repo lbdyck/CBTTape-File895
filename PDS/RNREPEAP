@@ -1,0 +1,38 @@
+)ATTR
+ % TYPE(TEXT) INTENS(HIGH)
+ @ TYPE(TEXT) INTENS(LOW) COLOR(YELLOW)
+ + TYPE(TEXT) INTENS(LOW)
+ ¢ TYPE(TEXT) INTENS(HIGH) COLOR(RED)
+ _ TYPE(INPUT) INTENS(HIGH)
+ $ TYPE(INPUT) INTENS(HIGH) PAD(_) CAPS(ON) COLOR(GREEN)
+ # TYPE(OUTPUT) INTENS(LOW) CAPS(ON) color(yellow)
+)BODY EXPAND(~~)
+@~ ~ - Repeat - ~ ~
+%COMMAND ==>_ZCMD                                              +SCROLL ==>_ZUSP+
++
++ DATE     - &ZDATE           +TIME     - &ZTIME            +USERID   - &ZUSER
++
++
++
++
+@                Datasetname of the dataset with the variables:  +
++
+@                  _RNREPDSN                                    +
++
++
++
++
++
++
+@                          End with END or ENTER
++
++
+)INIT
+  VGET (RNREPDSN) PROFILE
+  .CURSOR = RNREPDSN
+)PROC
+  VER (&RNREPDSN,DSNAME)
+  VPUT (RNREPDSN) PROFILE
+)FIELD
+ FIELD(ZCMD)  LEN(255)
+)END
